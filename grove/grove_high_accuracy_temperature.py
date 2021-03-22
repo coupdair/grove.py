@@ -42,6 +42,8 @@ def main():
     sensor = Factory.getTemper("MCP9808-I2C")
     sensor.resolution(Temper.RES_1_16_CELSIUS)
 
+    print("resolution=",sensor._resolution)
+
     print('Detecting temperature...')
     while True:
         print('{} Celsius'.format(sensor.temperature))
