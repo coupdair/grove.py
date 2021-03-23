@@ -28,6 +28,10 @@ Examples:
         print('{} Celsius'.format(sensor.temperature))
         time.sleep(1)
 '''
+
+#global
+I2C_Temperature_Address=0x1A
+
 import sys
 import time
 from grove.factory import Factory
