@@ -107,3 +107,24 @@ class TemperMCP9808(Temper):
         self._resolution = Temper.RES_1_2_CELSIUS
 ~~~
 
+### run
+
+get single temperature value on all probes, i.e. 7 probes with I2C id=0x18 to 0x1E
+
+~~~ { .bash }
+for((i=24;i<31;++i)); do ./grove_high_accuracy_temperature.py -n 1 -i $i; done | grep -e Celsius -e ' MCP9808'
+('trace: MCP9808::__init__', 'address=', 24, '(e.g. 0x18 = 24)')
+22.5 Celsius
+('trace: MCP9808::__init__', 'address=', 25, '(e.g. 0x18 = 24)')
+22.5 Celsius
+('trace: MCP9808::__init__', 'address=', 26, '(e.g. 0x18 = 24)')
+22.6875 Celsius
+('trace: MCP9808::__init__', 'address=', 27, '(e.g. 0x18 = 24)')
+22.75 Celsius
+('trace: MCP9808::__init__', 'address=', 28, '(e.g. 0x18 = 24)')
+23.4375 Celsius
+('trace: MCP9808::__init__', 'address=', 29, '(e.g. 0x18 = 24)')
+22.875 Celsius
+('trace: MCP9808::__init__', 'address=', 30, '(e.g. 0x18 = 24)')
+23.8125 Celsius
+~~~

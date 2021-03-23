@@ -36,7 +36,7 @@ from grove.temperature import Temper
 import argparse
 
 #metadata
-__version__     = "0.0.2d"
+__version__     = "0.0.2e"
 __author__      = "Sebastien COUDERT"
 
 __all__ = ['Temper']
@@ -51,15 +51,20 @@ def main():
   parser.add_argument('-v', '--version'
   , action="store_true", default=False
   , help='show version (default: False) currently v'+__version__)
-  ##integer
+  ##number of temperature
   parser.add_argument('-n', '--number'
   , default=-2
   , help='number of iteration')
+  ##I2C index
+  parser.add_argument('-i', '--id'
+  , default=24
+  , help='I2C id (default 24 = 0x18')
 
   ##parse
   args=parser.parse_args()
   version=args.version
   nb=int(args.number)+1
+  I2Cid=int(args.id)
   #}CLI option
 
   if(version):
@@ -71,7 +76,7 @@ def main():
   print("Insert Grove - I2C-High-Accuracy-Temperature")
   print("  to Grove-Base-Hat any I2C slot")
 
-  sensor = Factory.getTemper("MCP9808-I2C", address=0x19)
+  sensor = Factory.getTemper("MCP9808-I2C", address=I2Cid)
   sensor.resolution(Temper.RES_1_16_CELSIUS)
 
   print("resolution=",sensor._resolution)
