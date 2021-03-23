@@ -147,7 +147,7 @@ class __factory(object):
         if typ == "NTC-ADC":
             return TemperTypedNTC(channel)
         elif typ == "MCP9808-I2C":
-            return TemperMCP9808()
+            return TemperMCP9808(address=0x1A)
         else:
             self.__avail_list(typ, self.TemperEnum)
             sys.exit(1)
